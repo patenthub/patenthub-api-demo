@@ -46,8 +46,8 @@ public class QueryLikePatentDemo {
 
     public static void main(String[] args){
 
-        String baseUrl = "http://localhost:8080/api/patent/like?";
-        String token = "07aec099649e23f9f0e9f23a30e04cf9e9253700";
+        String baseUrl = "http://www.patenthub.cn/api/patent/like?";
+        String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
         String id = "CN20091ef9f399d0292e581b4a78df012284f592";
         int version = 1;
 

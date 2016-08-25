@@ -45,8 +45,8 @@ public class QueryPatentTransactionDemo {
 
     public static void main(String[] args){
 
-        String baseUrl = "http://localhost:8080/api/patent/tx?";
-        String token = "07aec099649e23f9f0e9f23a30e04cf9e9253700";
+        String baseUrl = "http://www.patenthub.cn/api/patent/tx?";
+        String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
         String an = "200910062869";
         int version = 1;
 
