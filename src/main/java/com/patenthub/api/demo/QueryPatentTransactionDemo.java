@@ -47,11 +47,11 @@ public class QueryPatentTransactionDemo {
 
         String baseUrl = "http://www.patenthub.cn/api/patent/tx?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
-        String an = "200910062869";
+        String id = "CN20091ef9f399d0292e581b4a78df012284f592";
         int version = 1;
 
         StringBuffer url = new StringBuffer();
-        url.append(baseUrl).append("t=").append(token).append("&an=").append(an).append("&v=").append(version);
+        url.append(baseUrl).append("t=").append(token).append("&id=").append(id).append("&v=").append(version);
 
         String result = search(url.toString());
 

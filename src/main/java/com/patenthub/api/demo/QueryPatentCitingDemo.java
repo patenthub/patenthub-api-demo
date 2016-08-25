@@ -48,11 +48,11 @@ public class QueryPatentCitingDemo {
 
         String baseUrl = "http://www.patenthub.cn/api/patent/citing?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
-        String an = "200910069047";
+        String id = "CN200911299e3da6bd8ba109203b524f1f08c25c";
         int version = 1;
 
         StringBuffer url = new StringBuffer();
-        url.append(baseUrl).append("t=").append(token).append("&an=").append(an).append("&v=").append(version);
+        url.append(baseUrl).append("t=").append(token).append("&id=").append(id).append("&v=").append(version);
 
         String result = search(url.toString());
 

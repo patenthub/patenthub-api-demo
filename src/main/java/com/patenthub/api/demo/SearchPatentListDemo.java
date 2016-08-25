@@ -51,7 +51,7 @@ public class SearchPatentListDemo {
         int version = 1;
 
         StringBuffer url = new StringBuffer();
-        url.append(baseUrl).append("t=").append(token).append("&q=").append(q).append("&v=").append(version);
+        url.append(baseUrl).append("t=").append(token).append("&q=").append(q).append("&v=").append(version).append("&hl=0");
 
         String result = search(url.toString());
 
