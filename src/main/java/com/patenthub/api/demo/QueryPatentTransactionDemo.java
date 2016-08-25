@@ -26,9 +26,9 @@ public class QueryPatentTransactionDemo {
     private static PoolingHttpClientConnectionManager connectionManager = null;
     private static HttpClientBuilder clientBuilder = null;
     private static RequestConfig requestConfig = null;
-    public static int REQUEST_TIMEOUT = 300;
-    public static int CONNECT_TIMEOUT = 300;
-    public static int SOCKET_TIMEOUT = 300;
+    public static int REQUEST_TIMEOUT = 3000;
+    public static int CONNECT_TIMEOUT = 3000;
+    public static int SOCKET_TIMEOUT = 3000;
     public static int MAX_CONNECTION = 100;
     public static int MAX_HOST_CONNECTION = 30;
     public static String UTF_8 = "UTF-8";
