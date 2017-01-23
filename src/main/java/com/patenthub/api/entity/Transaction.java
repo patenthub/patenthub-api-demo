@@ -5,7 +5,7 @@ package com.patenthub.api.entity;
  */
 public class Transaction {
     private String content;
-    private String executeDate;
+    private String date;
     private String type;
     private String applicationNumber;
 
@@ -17,12 +17,12 @@ public class Transaction {
         this.content = content;
     }
 
-    public String getExecuteDate() {
-        return executeDate;
+    public String getDate() {
+        return date;
     }
 
-    public void setExecuteDate(String executeDate) {
-        this.executeDate = executeDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getType() {

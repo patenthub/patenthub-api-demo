@@ -1,5 +1,7 @@
 package com.patenthub.api.entity;
 
+import java.util.List;
+
 /**
  * Created by patenthub on 2016/8/24.
  */
@@ -12,7 +14,7 @@ public class Patent {
     private String priorityNumber;
     private String priorityDate;
     private String applicant;
-    private String patentee;
+    private String assignee;
     private String inventor;
     private String applicationDate;
     private String applicationNumber;
@@ -32,6 +34,17 @@ public class Patent {
     private String firstInventor;
     private String firstApplicant;
     private String loc;
+
+    private List<String> pdfList;
+
+    public List<String> getPdfList() {
+        return pdfList;
+    }
+
+    public void setPdfList(List<String> pdfList) {
+        this.pdfList = pdfList;
+    }
+
 
     public String getId() {
         return id;
@@ -89,12 +102,12 @@ public class Patent {
         this.applicant = applicant;
     }
 
-    public String getPatentee() {
-        return patentee;
+    public String getAssignee() {
+        return assignee;
     }
 
-    public void setPatentee(String patentee) {
-        this.patentee = patentee;
+    public void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 
     public String getInventor() {

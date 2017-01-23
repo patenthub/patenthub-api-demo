@@ -1,7 +1,8 @@
 package com.patenthub.api.demo;
 
 import com.google.gson.Gson;
-import com.patenthub.api.model.Pagination;
+import com.patenthub.api.model.EnterprisePortraitModel;
+import com.patenthub.api.model.PatentModel;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -17,11 +18,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * 搜索接口 调用演示
+ * 专利基本信息接口 调用演示
  */
-public class SearchPatentListDemo {
+public class AnalysisEnterprisePortraitDemo {
 
-    private static Logger logger = LoggerFactory.getLogger(SearchPatentListDemo.class);
+    private static Logger logger = LoggerFactory.getLogger(AnalysisEnterprisePortraitDemo.class);
 
     private static PoolingHttpClientConnectionManager connectionManager = null;
     private static HttpClientBuilder clientBuilder = null;
@@ -45,19 +46,19 @@ public class SearchPatentListDemo {
 
     public static void main(String[] args){
 
-        String baseUrl = "http://www.patenthub.cn/api/s?";
+        String baseUrl = "http://www.patenthub.cn/api/a/portrait?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
-        String q = "石墨烯";
+        String en = "华为技术有限公司";
         int version = 1;
 
         StringBuffer url = new StringBuffer();
-        url.append(baseUrl).append("ds=cn").append("&t=").append(token).append("&q=").append(q).append("&v=").append(version).append("&hl=0");
+        url.append(baseUrl).append("t=").append(token).append("&en=").append(en).append("&v=").append(version);
 
         String result = search(url.toString());
 
-        Pagination pagination = new Gson().fromJson(result,Pagination.class);
+        EnterprisePortraitModel enterprisePortraitModel = new Gson().fromJson(result,EnterprisePortraitModel.class);
 
-        System.out.println(new Gson().toJson(pagination));
+        System.out.println(new Gson().toJson(enterprisePortraitModel));
 
     }
 
