@@ -18,8 +18,6 @@ public class Patent {
     private String inventor;
     private String applicationDate;
     private String applicationNumber;
-    private String publicationNumber;
-    private String publicationDate;
     private String type;
     private String agency;
     private String agent;
@@ -28,14 +26,40 @@ public class Patent {
 
     private String claims;//权利要求说明书
 
-    private String grantNumber;
-    private String grantDate;
     private String mainIpc;
     private String firstInventor;
     private String firstApplicant;
     private String loc;
 
     private List<String> pdfList;
+
+    private String documentNumber;
+    private String documentDate;
+    private int documentType;
+
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    public String getDocumentDate() {
+        return documentDate;
+    }
+
+    public void setDocumentDate(String documentDate) {
+        this.documentDate = documentDate;
+    }
+
+    public int getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(int documentType) {
+        this.documentType = documentType;
+    }
 
     public List<String> getPdfList() {
         return pdfList;
@@ -134,22 +158,6 @@ public class Patent {
         this.applicationNumber = applicationNumber;
     }
 
-    public String getPublicationNumber() {
-        return publicationNumber;
-    }
-
-    public void setPublicationNumber(String publicationNumber) {
-        this.publicationNumber = publicationNumber;
-    }
-
-    public String getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(String publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
     public String getType() {
         return type;
     }
@@ -196,22 +204,6 @@ public class Patent {
 
     public void setClaims(String claims) {
         this.claims = claims;
-    }
-
-    public String getGrantNumber() {
-        return grantNumber;
-    }
-
-    public void setGrantNumber(String grantNumber) {
-        this.grantNumber = grantNumber;
-    }
-
-    public String getGrantDate() {
-        return grantDate;
-    }
-
-    public void setGrantDate(String grantDate) {
-        this.grantDate = grantDate;
     }
 
     public String getMainIpc() {

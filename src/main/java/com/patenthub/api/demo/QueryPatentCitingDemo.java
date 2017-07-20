@@ -48,7 +48,7 @@ public class QueryPatentCitingDemo {
 
         String baseUrl = "http://www.patenthub.cn/api/patent/citing?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
-        String id = "CN200911299e3da6bd8ba109203b524f1f08c25c";
+        String id = "CN101658786A";
         int version = 1;
 
         StringBuffer url = new StringBuffer();
