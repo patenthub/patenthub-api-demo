@@ -1,7 +1,9 @@
 package com.patenthub.api.demo;
 
 import com.google.gson.Gson;
+import com.patenthub.api.model.PatentModel;
 import com.patenthub.api.model.TransactionModel;
+import com.patenthub.api.util.SslUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -43,9 +45,9 @@ public class QueryPatentTransactionDemo {
         clientBuilder.setConnectionManager(connectionManager);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
 
-        String baseUrl = "http://www.patenthub.cn/api/patent/tx?";
+        String baseUrl = "https://www.patenthub.cn/api/patent/tx?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
         String id = "CN106898940A";
         int version = 1;
@@ -53,11 +55,15 @@ public class QueryPatentTransactionDemo {
         StringBuffer url = new StringBuffer();
         url.append(baseUrl).append("t=").append(token).append("&id=").append(id).append("&v=").append(version);
 
+        //HTTP处理,即将废弃
         String result = search(url.toString());
-
         TransactionModel transactionModel = new Gson().fromJson(result,TransactionModel.class);
-
         System.out.println(new Gson().toJson(transactionModel));
+
+        //HTTPS 处理
+        String r = SslUtils.searchHttps(url.toString());
+        TransactionModel p = new Gson().fromJson(r,TransactionModel.class);
+        System.out.println(new Gson().toJson(p));
 
     }
 
@@ -66,6 +72,7 @@ public class QueryPatentTransactionDemo {
      * @param url    路径
      * @return
      */
+    @Deprecated
     public static String search(String url){
         CloseableHttpClient httpClient = clientBuilder.build();
         StringBuilder entityStringBuilder = null;

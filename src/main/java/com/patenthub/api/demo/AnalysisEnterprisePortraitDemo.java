@@ -1,8 +1,10 @@
 package com.patenthub.api.demo;
 
 import com.google.gson.Gson;
+import com.patenthub.api.model.CitingModel;
 import com.patenthub.api.model.EnterprisePortraitModel;
 import com.patenthub.api.model.PatentModel;
+import com.patenthub.api.util.SslUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -44,9 +46,9 @@ public class AnalysisEnterprisePortraitDemo {
         clientBuilder.setConnectionManager(connectionManager);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
 
-        String baseUrl = "http://www.patenthub.cn/api/a/portrait?";
+        String baseUrl = "https://www.patenthub.cn/api/a/portrait?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
         String en = "华为技术有限公司";
         int version = 1;
@@ -54,11 +56,15 @@ public class AnalysisEnterprisePortraitDemo {
         StringBuffer url = new StringBuffer();
         url.append(baseUrl).append("t=").append(token).append("&en=").append(en).append("&v=").append(version);
 
+        //HTTP处理,即将废弃
         String result = search(url.toString());
-
         EnterprisePortraitModel enterprisePortraitModel = new Gson().fromJson(result,EnterprisePortraitModel.class);
-
         System.out.println(new Gson().toJson(enterprisePortraitModel));
+
+        //HTTPS 处理
+        String r = SslUtils.searchHttps(url.toString());
+        EnterprisePortraitModel p = new Gson().fromJson(r,EnterprisePortraitModel.class);
+        System.out.println(new Gson().toJson(p));
 
     }
 

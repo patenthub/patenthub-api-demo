@@ -2,6 +2,7 @@ package com.patenthub.api.demo;
 
 import com.google.gson.Gson;
 import com.patenthub.api.model.Pagination;
+import com.patenthub.api.util.SslUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -14,7 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * 搜索接口 调用演示
@@ -43,9 +47,9 @@ public class SearchPatentListDemo {
         clientBuilder.setConnectionManager(connectionManager);
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
 
-        String baseUrl = "http://www.patenthub.cn/api/s?";
+        String baseUrl = "https://www.patenthub.cn/api/s?";
         String token = "81c38e8597cb41a8e19468a24ff4f64b11ce761f";
         String q = "石墨烯";
         int version = 1;
@@ -53,24 +57,32 @@ public class SearchPatentListDemo {
         StringBuffer url = new StringBuffer();
         url.append(baseUrl).append("ds=cn").append("&t=").append(token).append("&q=").append(q).append("&v=").append(version).append("&hl=0");
 
+        //HTTP处理,即将废弃
         String result = search(url.toString());
-
         Pagination pagination = new Gson().fromJson(result,Pagination.class);
-
         System.out.println(new Gson().toJson(pagination));
 
+        //HTTPS 处理
+        String r = SslUtils.searchHttps(url.toString());
+        Pagination p = new Gson().fromJson(r,Pagination.class);
+        System.out.println(new Gson().toJson(p));
+
     }
+
+
 
     /**
      * 发送get请求
      * @param url    路径
      * @return
      */
-    public static String search(String url){
+    @Deprecated
+    public static String search(String url)throws Exception{
         CloseableHttpClient httpClient = clientBuilder.build();
         StringBuilder entityStringBuilder = null;
 
         try {
+
             HttpGet get = new HttpGet(url);
             get.setConfig(requestConfig);
             CloseableHttpResponse httpResponse = httpClient.execute(get);
